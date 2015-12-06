@@ -1,0 +1,46 @@
+class PACS_Test
+
+	operations
+		
+		public genPACS : () ==> PACS
+		genPACS() == (
+			
+			dcl testSystem : PACS := new PACS();
+			
+			dcl userGroup1 : UserGroup := new UserGroup("Direcção");
+			dcl userGroup2 : UserGroup := new UserGroup("Docentes");
+			dcl userGroup3 : UserGroup := new UserGroup("Alunos");
+			dcl userGroup4 : UserGroup := new UserGroup("Funcionários");
+			
+			dcl user1 : User := new User("Fernando");
+			dcl user2 : User := new User("Pedro");
+			dcl user3 : User := new User("Maria");
+			dcl user4 : User := new User("Ricardo");
+			dcl user5 : User := new User("Sara");
+			
+			testSystem.addUserGroups({
+				userGroup1,
+				userGroup2,
+				userGroup3,
+				userGroup4
+			});
+			
+			testSystem.addUser(user1, {userGroup2});
+			testSystem.addUser(user2, {userGroup3});
+			testSystem.addUser(user3, {userGroup4});
+			testSystem.addUser(user4, {userGroup1, userGroup2});
+			testSystem.addUser(user5, {});
+			
+		
+			return testSystem;
+		);
+		
+		
+		
+		
+		
+		
+
+
+
+end PACS_Test

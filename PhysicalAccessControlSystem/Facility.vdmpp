@@ -1,0 +1,28 @@
+class Facility
+
+	types
+		public AccessPoint = seq1 of char;
+
+	instance variables
+	
+		private accesPoint : AccessPoint;
+		private rules : set of Rule := {};
+		
+	operations
+		
+		public Facility : AccessPoint ==> Facility
+		Facility(ap) == (
+			accesPoint := ap;
+			return self;
+		);
+		
+		public addRules : set of Rule ==> ()
+		addRules(r) == rules := rules union r;
+		
+		pure public getAccessPoint : () ==> AccessPoint
+		getAccessPoint() == return accesPoint;
+		
+		pure public getRules : () ==> set of Rule
+		getRules() == return rules;
+
+end Facility

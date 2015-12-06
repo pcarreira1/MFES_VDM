@@ -1,0 +1,34 @@
+class FacilityGroup
+	
+	types
+		public FacilityGroupName = seq1 of char;
+		
+	instance variables
+		private name : FacilityGroupName;
+		private facilities : set of Facility := {};
+		private rules : set of Rule := {};
+
+	operations
+	
+		public FacilityGroup : FacilityGroupName ==> FacilityGroup
+		FacilityGroup(fgn) == (
+			name := fgn;
+			return self;
+		);
+		
+		public addFacilities : set of Facility ==> ()
+		addFacilities(f) == facilities := facilities union f;
+		
+		public addRules : set of Rule ==> ()
+		addRules(r) == rules := rules union r;
+		
+		pure public getName : () ==> FacilityGroupName
+		getName() == return name;
+		
+		pure public getFacilities : () ==> set of Facility
+		getFacilities() == return facilities;
+		
+		pure public getRules : () ==> set of Rule
+		getRules() == return rules;
+
+end FacilityGroup

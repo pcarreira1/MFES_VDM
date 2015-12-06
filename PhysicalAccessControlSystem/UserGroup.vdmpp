@@ -1,0 +1,37 @@
+class UserGroup
+
+	types
+		static public UserGroupName = seq1 of char;
+		
+	instance variables
+	
+		private name: UserGroupName;
+		private users: set of User := {};
+		private rules: set of Rule := {};
+
+		
+	operations
+	
+		public UserGroup : UserGroupName ==> UserGroup
+		UserGroup(ugn) == (
+			name := ugn;
+			return self;
+		);
+		
+		public addUsers : set of User ==> ()
+		addUsers(u) == users := users union u;
+		
+		public addRules : set of Rule ==> ()
+		addRules(r) == rules := rules union r;
+		
+		pure public getRules : () ==> set of Rule
+		getRules() == return rules;
+	                       
+		pure public getName : () ==> UserGroupName
+		getName() == return name;
+		
+		pure public getUsers : () ==> set of User
+		getUsers() == return users;
+			
+
+end UserGroup

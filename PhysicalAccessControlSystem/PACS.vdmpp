@@ -1,0 +1,37 @@
+class PACS
+		
+	instance variables
+	
+		private facilityGroups : set of FacilityGroup := {};
+		private facilities : set of Facility := {};
+		
+		private userGroups : set of UserGroup := {};
+		private users : set of User := {};
+				
+		private rules : set of Rule := {};
+
+		
+	operations
+		
+		public PACS : () ==> PACS
+    PACS() == return self;
+    
+    public addUserGroups : set of UserGroup ==> ()
+    addUserGroups(ug) == userGroups := userGroups union ug;
+    
+    public addUser : User * set of UserGroup ==> ()
+    addUser(u, ugs) == (   	
+    		users := users union {u};
+    		let ug in set ugs in ug.addUsers({u});
+    )
+    pre ugs subset userGroups and u not in set users
+    post let ug in set ugs in u in set ug.getUsers();
+		
+
+
+end PACS
+
+
+
+
+

@@ -1,0 +1,38 @@
+class AccessPoint
+	
+	types
+		public AccessPointName = seq1 of char;
+	
+	instance variables
+		private name : AccessPointName;
+		private parentAccessPoint : AccessPoint;
+		private childAccessPoints : set of AccessPoint;
+
+	
+	operations
+	
+		public AccessPoint : AccessPointName * AccessPoint ==> AccessPoint
+		AccessPoint(nm, ap) == (
+			name := nm;
+			parentAccessPoint := ap;
+			childAccessPoints := {};
+			
+			return self;
+		);
+		
+		public addChildAccessPoint : AccessPoint ==> ()
+		addChildAccessPoint(cap) == (
+			
+			childAccessPoints := {cap} union childAccessPoints;
+		);
+		
+		pure public getName: () ==> AccessPointName
+		getName() == return name;
+		
+		pure public getParentAccessPoint: () ==> AccessPoint
+		getParentAccessPoint() == return parentAccessPoint;
+		
+		pure public getChildAccessPoint: () ==> set of AccessPoint
+		getChildAccessPoint() == return childAccessPoints;
+
+end AccessPoint

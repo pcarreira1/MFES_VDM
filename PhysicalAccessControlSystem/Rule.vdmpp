@@ -1,0 +1,19 @@
+class Rule
+
+	instance variables
+	
+		private users : set of User;
+		private facilities : set of Facility;
+		private permission : bool;
+		
+	operations
+		
+		public Rule : set of User * set of Facility * bool ==> Rule
+		Rule(us, fs, p) == (
+			users := us;
+			facilities := fs;
+			permission := p;
+		);
+		
+
+end Rule
